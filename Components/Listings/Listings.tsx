@@ -1,6 +1,6 @@
 'use client';
 import { useQuery } from '@tanstack/react-query';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 const Listings = () => {
     const { data } = useQuery({ queryKey: ['posts'] }) as { data: number[] };
@@ -9,6 +9,13 @@ const Listings = () => {
     };
 
     const [filters, setFilters] = useState(initFilters);
+    const [filteredListings, setFilteredListings] = useState<number[]>();
+
+    useMemo(() => {
+        setFilteredListings(
+            data ? data.filter(i => filters.includes(i)) : undefined
+        );
+    }, [data, filters]);
 
     return (
         <div className="flex flex-col">
@@ -23,10 +30,8 @@ const Listings = () => {
             <button onClick={() => setFilters([...filters, 2])}>
                 Update Filter
             </button>
-            {data ? (
-                data
-                    .filter(i => filters.includes(i))
-                    .map(i => <h1 key={i}>{i}</h1>)
+            {filteredListings ? (
+                filteredListings.map(i => <h1 key={i}>{i}</h1>)
             ) : (
                 <h1>{'Data not found'}</h1>
             )}
