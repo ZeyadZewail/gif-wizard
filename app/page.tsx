@@ -9,10 +9,7 @@ import getFilters from '@/Util/getFilters/getFilters';
 const Home = async ({ params }: { params: { slug: string } }) => {
     const queryClient = getQueryClient();
     await queryClient.prefetchQuery(['posts'], () => getPosts());
-    await queryClient.prefetchQuery(['filters'], () =>
-        getFilters(Number(params.slug))
-    );
-    console.log(params.slug);
+    await queryClient.prefetchQuery(['filters'], () => getFilters());
     const dehydratedState = dehydrate(queryClient);
 
     return (

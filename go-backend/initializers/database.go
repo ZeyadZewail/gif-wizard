@@ -1,6 +1,8 @@
 package initializers
 
 import (
+	"gif-wizard-backend/database/models"
+
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 )
@@ -16,5 +18,7 @@ func ConnectToDB(){
   }else {
     println("DB connected")
   }
+
+  DB.AutoMigrate(&models.Collection{},&models.Gif{},&models.Tag{})
 
 }
