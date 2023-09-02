@@ -7,5 +7,5 @@ import (
 type Collection struct{
 	gorm.Model
 	Name string
-	Gifs []Gif `gorm:"many2many:collection_gifs;"`
+	Gifs []Gif `gorm:"many2many:collections_gifs;"`
 }

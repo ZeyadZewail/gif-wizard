@@ -30,7 +30,7 @@ func CreateCollection (c *gin.Context){
 
 func GetCollections (c *gin.Context) {
 	var collections []models.Collection
-	initializers.DB.Find(&collections)
+	initializers.DB.Preload("Gifs").Find(&collections)
 
 	c.JSON(200,gin.H{"response":collections})
 }
@@ -39,7 +39,7 @@ func GetCollectionByID (c *gin.Context) {
 	id := c.Param("id")
 
 	var collection models.Collection
-	initializers.DB.First(&collection,id)
+	initializers.DB.Preload("Gifs").First(&collection,id)
 
 	c.JSON(200,gin.H{"response":collection})
 	

@@ -19,9 +19,13 @@ func init(){
 func main() {
 	r := gin.Default()
 
-	r.GET("/collections", controllers.GetCollections)
-	r.POST("/collections/create",controllers.CreateCollection)
-	r.GET("/collections/:id",controllers.GetCollectionByID)
+	r.GET("api/collections", controllers.GetCollections)
+	r.POST("api/collections/create",controllers.CreateCollection)
+	r.GET("api/collections/:id",controllers.GetCollectionByID)
+
+	r.GET("api/gifs", controllers.GetGifs)
+	r.POST("api/gifs/create",controllers.CreateGif)
+	r.GET("api/gifs/:id",controllers.GetGifByID)
 
 	r.Run(); // listen and serve on 0.0.0.0:PORT
 }
