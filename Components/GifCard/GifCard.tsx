@@ -14,7 +14,7 @@ const GifCard = ({ gif }: { gif: Gif }) => {
 
     return (
         <div
-            className="flex flex-col rounded-3xl p-6 w-60 h-60 justify-between items-center cursor-pointer"
+            className="flex flex-col rounded-3xl p-6 w-60 h-60 justify-between justify-self-center items-center cursor-pointer"
             style={{ backgroundColor: buttonColor }}
             onClick={saveLinkToClipboard}
         >
