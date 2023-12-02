@@ -1,34 +1,39 @@
 'use client';
-import { useQuery } from '@tanstack/react-query';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { pb } from '@/Util/Pocketbase';
+import { RecordModel } from 'pocketbase';
 import CollectionCard from '@/Components/CollectionCard/CollectionCard';
-import { Collection } from '@/Types/Collection';
 
 const CollectionsList = () => {
-    const { data } = useQuery({ queryKey: ['collections'] }) as {
-        data: Collection[];
-    };
-    const { data: initFilters } = useQuery({ queryKey: ['filters'] }) as {
-        data: number[];
-    };
+    const [data, setData] = useState<RecordModel[]>([]);
+    const [loading, setLoading] = useState(true);
+    useEffect(() => {
+        const FetchData = async () => {
+            const data = await pb.collection('collections').getFullList();
+            setData(data);
+            setLoading(false);
+        };
 
-    const [filters, setFilters] = useState(initFilters);
-    const [filteredListings, setFilteredListings] = useState<number[]>();
-
-    // useMemo(() => {
-    //     setFilteredListings(
-    //         data ? data.filter(i => filters.includes(i)) : undefined
-    //     );
-    // }, [data, filters]);
+        void FetchData();
+    }, []);
 
     return (
-        <div className="grid">
-            {data ? (
-                data.map(c => (
-                    <CollectionCard key={c.ID + c.CreatedAt} collection={c} />
-                ))
+        <div>
+            {loading ? (
+                'Loading...'
             ) : (
-                <h1>{'Collections Data not found'}</h1>
+                <div className="grid">
+                    {data ? (
+                        data.map(c => (
+                            <CollectionCard
+                                key={c.ID + c.CreatedAt}
+                                collection={c}
+                            />
+                        ))
+                    ) : (
+                        <h1>{'Collections Data not found'}</h1>
+                    )}
+                </div>
             )}
         </div>
     );

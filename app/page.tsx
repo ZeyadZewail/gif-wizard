@@ -1,4 +1,4 @@
-import Homepage from '@/Components/Homepage/Homepage';
+import Homepage from '@/Components/Pages/Homepage/Homepage';
 
 const Home = async ({ params }: { params: { slug: string } }) => {
     return <Homepage slug={params.slug} />;

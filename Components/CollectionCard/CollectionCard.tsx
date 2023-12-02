@@ -1,10 +1,10 @@
 'use client';
 
-import { Collection } from '@/Types/Collection';
 import { useRouter } from 'next/navigation';
 import { buttonColor } from '@/Util/configs/Theme';
+import { RecordModel } from 'pocketbase';
 
-const CollectionCard = ({ collection }: { collection: Collection }) => {
+const CollectionCard = ({ collection }: { collection: RecordModel }) => {
     const router = useRouter();
     const onClickNav = () => {
         router.push(`/collections/${collection.ID}`);
@@ -16,8 +16,8 @@ const CollectionCard = ({ collection }: { collection: Collection }) => {
             style={{ backgroundColor: buttonColor }}
             onClick={onClickNav}
         >
-            <h1>{collection.Name}</h1>
-            <p>{`Gif count: ${collection.Gifs.length}`}</p>
+            <h1>{collection['name']}</h1>
+            {/*<p>{`Gif count: ${collection.Gifs.length}`}</p>*/}
         </div>
     );
 };
