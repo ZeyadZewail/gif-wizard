@@ -16,8 +16,8 @@ const CollectionCard = ({ collection }: { collection: RecordModel }) => {
             style={{ backgroundColor: buttonColor }}
             onClick={onClickNav}
         >
-            <h1>{collection['name']}</h1>
-            {/*<p>{`Gif count: ${collection.Gifs.length}`}</p>*/}
+            <h1>{collection.name}</h1>
+            <p>{`Gif count: ${collection.gifs.length}`}</p>
         </div>
     );
 };

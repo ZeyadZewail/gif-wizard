@@ -9,9 +9,14 @@ const CollectionsList = () => {
     const [loading, setLoading] = useState(true);
     useEffect(() => {
         const FetchData = async () => {
-            const data = await pb.collection('collections').getFullList();
-            setData(data);
-            setLoading(false);
+            try {
+                const data = await pb
+                    .collection('collections')
+                    .getFullList({ expand: 'gifs' });
+
+                setData(data);
+                setLoading(false);
+            } catch (e) {}
         };
 
         void FetchData();
