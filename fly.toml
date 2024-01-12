@@ -31,6 +31,11 @@ kill_timeout = "5s"
     handlers = ["http"]
     force_https = true
 
+ [[services.ports]]
+   port = 8090
+   handlers = ["http"]
+   force_https = true
+
   [[services.ports]]
     port = 443
     handlers = ["tls", "http"]
