@@ -4,6 +4,7 @@ EXPOSE 8090
 ARG PB_VERSION=0.20.5
 ENV server_address = "127.0.0.1"
 ENV server_port = 8090
+ENV NODE_ENV="production"
 
 RUN apt-get -y update
 
@@ -15,5 +16,4 @@ COPY ./ ./
 
 WORKDIR /root/
 RUN yarn
-RUN yarn build
-CMD /pb/pocketbase serve --http=0.0.0.0:8090 & yarn start --port 8080
+CMD yarn build && /pb/pocketbase serve --http=0.0.0.0:8090 & yarn start --port 8080
