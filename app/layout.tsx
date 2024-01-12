@@ -5,7 +5,7 @@ import { Inter } from 'next/font/google';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-    title: 'Gif Wizard 🧙',
+    title: '🧙 GIF Wizard',
     description: 'Save your favourite gifs with magic ✨',
 };
 

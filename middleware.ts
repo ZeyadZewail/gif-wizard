@@ -30,9 +30,9 @@ export async function middleware(request: NextRequest) {
         );
     }
 
-    if (request.nextUrl.pathname.startsWith('/auth')) {
-        return response;
-    }
+    // if (request.nextUrl.pathname.startsWith('/auth')) {
+    //     return response;
+    // }
 
     if (
         !pb.authStore.isValid &&
