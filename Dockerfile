@@ -16,4 +16,5 @@ COPY ./ ./
 
 WORKDIR /root/
 RUN yarn
-CMD yarn build && /pb/pocketbase serve --http=0.0.0.0:8090 & yarn start --port 8080
+RUN yarn build
+CMD /pb/pocketbase serve --http=0.0.0.0:8090 & yarn start --port 8080
