@@ -1,13 +1,14 @@
 import type { Config } from 'tailwindcss';
 
-import { join } from 'path';
-
 const config: Config = {
-    content: [
-        join(__dirname, 'pages/**/*.{js,ts,jsx,tsx,mdx}'),
-        join(__dirname, 'components/**/*.{js,ts,jsx,tsx,mdx}'),
-        join(__dirname, 'app/**/*.{js,ts,jsx,tsx,mdx}'),
-    ],
+    content: {
+        relative: true,
+        files: [
+            './pages/**/*.{js,ts,jsx,tsx,mdx}',
+            './components/**/*.{js,ts,jsx,tsx,mdx}',
+            './app/**/*.{js,ts,jsx,tsx,mdx}',
+        ],
+    },
     theme: {
         extend: {
             backgroundImage: {
