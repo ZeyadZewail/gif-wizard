@@ -15,7 +15,7 @@ const GifGrid = ({ gifs }: { gifs: Gif[] }) => {
             className="2xl:justify-start justify-center"
         >
             {gifs.map(gif => (
-                <GifCard key={gif.Name + gif.CreatedAt} gif={gif} />
+                <GifCard key={gif.name + gif.created} gif={gif} />
             ))}
             <div className="opacity-50 flex flex-col rounded-3xl  p-6 w-80 h-60 justify-center items-center cursor-pointer">
                 <Image src={plus} alt="plus" style={{ maxHeight: '80%' }} />

@@ -1,13 +1,13 @@
-import { Collection } from '@/Types/Collection';
 import { Tag } from '@/Types/Tag';
 
 export interface Gif {
-    ID: number;
-    CreatedAt: string;
-    UpdatedAt: string;
-    DeletedAt: string;
-    Name: string;
-    Link: string;
-    Collections: Collection[];
+    collection: string;
+    collectionId: string;
+    collectionName: string;
+    created: string;
+    id: string;
+    name: string;
+    updated: string;
+    url: string;
     Tags: Tag[];
 }

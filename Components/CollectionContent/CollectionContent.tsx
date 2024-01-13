@@ -1,8 +1,10 @@
 'use client';
 
-const CollectionContent = ({ id }: { id: string }) => {
-    // return <GifGrid gifs={data.Gifs} />;
-    return <div>CollectionContent</div>;
+import GifGrid from '@/Components/GifGrid/GifGrid';
+import { Collection } from '@/Types/Collection';
+
+const CollectionContent = ({ collection }: { collection: Collection }) => {
+    return <GifGrid gifs={collection.expand.gifs} />;
 };
 
 export default CollectionContent;

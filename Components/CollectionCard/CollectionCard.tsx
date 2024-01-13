@@ -2,12 +2,13 @@
 
 import { useRouter } from 'next/navigation';
 import { buttonColor } from '@/Util/configs/Theme';
-import { RecordModel } from 'pocketbase';
+import { Collection } from '@/Types/Collection';
 
-const CollectionCard = ({ collection }: { collection: RecordModel }) => {
-    const router = useRouter();
+const CollectionCard = ({ collection }: { collection: Collection }) => {
+    const { push } = useRouter();
+
     const onClickNav = () => {
-        router.push(`/collections/${collection.ID}`);
+        push(`/collections/${collection.id}`);
     };
 
     return (

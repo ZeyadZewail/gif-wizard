@@ -1,6 +1,6 @@
 import { Gif } from '@/Types/Gif';
-import Image from 'next/image';
 import { buttonColor } from '@/Util/configs/Theme';
+import Image from 'next/image';
 
 const imageSize = {
     width: 250,
@@ -9,7 +9,7 @@ const imageSize = {
 
 const GifCard = ({ gif }: { gif: Gif }) => {
     const saveLinkToClipboard = () => {
-        void navigator.clipboard.writeText(gif.Link);
+        void navigator.clipboard.writeText(gif.url);
     };
 
     return (
@@ -22,10 +22,10 @@ const GifCard = ({ gif }: { gif: Gif }) => {
                 width={imageSize.width}
                 height={imageSize.height}
                 style={{ maxHeight: imageSize.height }}
-                src={gif.Link}
-                alt={gif.Name}
+                src={gif.url}
+                alt={gif.name}
             />
-            <h1>{gif.Name}</h1>
+            <h1>{gif.name}</h1>
         </div>
     );
 };

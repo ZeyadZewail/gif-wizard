@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { pb } from '@/Util/Pocketbase';
 import { RecordModel } from 'pocketbase';
 import CollectionCard from '@/Components/CollectionCard/CollectionCard';
+import { Collection } from '@/Types/Collection';
 
 const CollectionsList = () => {
     const [data, setData] = useState<RecordModel[]>([]);
@@ -32,7 +33,7 @@ const CollectionsList = () => {
                         data.map(c => (
                             <CollectionCard
                                 key={c.ID + c.CreatedAt}
-                                collection={c}
+                                collection={c as Collection}
                             />
                         ))
                     ) : (

@@ -1,8 +1,9 @@
 'use client';
 
-const CollectionInfo = ({ id }: { id: string }) => {
-    // return <div className="text-7xl self-center">{data.Name}</div>;
-    return <div>CollectionInfo</div>;
+import { Collection } from '@/Types/Collection';
+
+const CollectionInfo = ({ collection }: { collection: Collection }) => {
+    return <div className="text-7xl self-center">{collection.name}</div>;
 };
 
 export default CollectionInfo;
